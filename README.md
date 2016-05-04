@@ -1,2 +1,5 @@
 # DD1349_tower_defence
-Soon to be basic implementation of a tower defence game
+Soon to be basic implementation of a tower defence game!
+
+This project will incorporate the absolute basic 
+
