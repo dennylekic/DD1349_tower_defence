@@ -10,15 +10,13 @@ public class Draw extends JPanel{
 	public Draw() {
 
 		tileMap = new TileMap("maps/tilemap.txt");
-		//tile = new Tile[10];
-		//tile[0] = new Tile(0, 0, Color.RED);
-		//tile[1] = new Tile(20,0,Color.BLUE);
 	}
 	
 	
 	public void paintComponent(Graphics g) {
 	        super.paintComponent(g);
 	        tileMap.Draw(g);
+	        g.setColor(Color.RED);
 	        
 	}
 

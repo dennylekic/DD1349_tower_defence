@@ -49,7 +49,11 @@ public class TileMap {
 					tileMap[row][col].draw(g);
 				}
 				else if (tileType == 1) {	
-					tileMap[row][col] = new Tile(row * tileSize, col * tileSize, Color.BLUE);
+					tileMap[row][col] = new Tile(row * tileSize, col * tileSize, Color.BLACK);
+					tileMap[row][col].draw(g);
+				}
+				else if (tileType == 2) {	
+					tileMap[row][col] = new Tile(row * tileSize, col * tileSize, Color.GRAY);
 					tileMap[row][col].draw(g);
 				}
 			}
