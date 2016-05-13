@@ -1,23 +1,37 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-import javax.swing.JComponent;
+public class Tile {
 
-
-public class Tile extends JComponent {
-
-	private static final int WIDTH = 20, HEIGHT = 20;
-	private static int x,y;
-	 public Tile(int x, int y) {
-        super();
+	private int tileSize = 20, x, y;
+	private Color c;
+	 public Tile(int x, int y , Color c) {
         this.x = x;
         this.y = y;
-        
+        this.c = c; 
     }
-		
-	 public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setColor(Color.red);
-        g.fillRect(x, y, WIDTH, HEIGHT);
-    }
+	 
+	public int getTileSize() {
+		return tileSize;
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
+	public Color getColor() {
+		return c;
+	}
+	
+	public void draw(Graphics g) {
+		g.setColor(c);
+		g.fillRect(x, y, tileSize, tileSize);
+	}
+	
+	
+
 }
