@@ -3,7 +3,7 @@ import java.awt.Graphics;
 
 public class Tile {
 
-	private int tileSize = 20, x, y;
+	private int tileSize = 40, x, y;
 	private Color c;
 	 public Tile(int x, int y , Color c) {
         this.x = x;

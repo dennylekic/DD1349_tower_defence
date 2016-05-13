@@ -27,20 +27,20 @@ public class TileMap {
 			for (int row = 0; row < numRow; row++) {
 				String line = br.readLine();
 				String[] tokens = line.split(blank);
-				System.out.println(numCol);
-				for (int col = 0; col < numRow; col++) {
-					map[row][col] = Integer.parseInt(tokens[col]);
+				for (int col = 0; col < numCol; col++) {
+					map[col][row] = Integer.parseInt(tokens[col]);
 				}
 			}
 			br.close();
 		} 
 		catch (Exception e) {
 			System.out.println("error lodin map file");
+			System.out.println(e);
 		}
 	}
 	
 	public void Draw(Graphics g) {
-		
+			
 		for (int row = 0; row < map.length; row++) {
 			for (int col = 0; col < map[row].length; col++) {
 				int tileType = map[row][col];
@@ -49,7 +49,7 @@ public class TileMap {
 					tileMap[row][col].draw(g);
 				}
 				else if (tileType == 1) {	
-					tileMap[row][col] = new Tile(row * tileSize, col * tileSize, Color.RED);
+					tileMap[row][col] = new Tile(row * tileSize, col * tileSize, Color.BLUE);
 					tileMap[row][col].draw(g);
 				}
 			}
