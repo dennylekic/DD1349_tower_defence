@@ -13,7 +13,10 @@ public class TileMap {
 	
 	public TileMap(String s) {
 		
-		tileSize = new Tile(0,0,Color.RED).getTileSize();
+		//get tile size
+		tileSize = new Tile(0,0,Color.RED).getObjektSize();
+		
+		// lodes in map sturktionr from file 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(s));
 			
@@ -38,6 +41,8 @@ public class TileMap {
 			System.out.println(e);
 		}
 	}
+	
+	// draws the map
 	
 	public void Draw(Graphics g) {
 			

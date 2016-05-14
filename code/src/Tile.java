@@ -1,35 +1,20 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Tile {
+public class Tile extends Object{
 
-	private int tileSize = 40, x, y;
-	private Color c;
-	 public Tile(int x, int y , Color c) {
-        this.x = x;
-        this.y = y;
-        this.c = c; 
+	
+	public Tile(int x, int y , Color c) {
+        setX(x);
+        setY(y);
+        setColor(c);
+        setObjektSize(40); 
     }
 	 
-	public int getTileSize() {
-		return tileSize;
-	}
-	
-	public int getX() {
-		return x;
-	}
-	
-	public int getY() {
-		return y;
-	}
-	
-	public Color getColor() {
-		return c;
-	}
 	
 	public void draw(Graphics g) {
 		g.setColor(c);
-		g.fillRect(x, y, tileSize, tileSize);
+		g.fillRect(x, y, objektSize, objektSize);
 	}
 	
 	
