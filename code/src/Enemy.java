@@ -16,7 +16,7 @@ public class Enemy extends Object{
 	}
 	
 	public void Update() {
-		
+		setX(getX() + 5);
 	}
 	
 }
