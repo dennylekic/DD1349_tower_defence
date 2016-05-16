@@ -10,8 +10,12 @@ public class TileMap {
 	private int[][] map;
 	private Tile[][] tileMap;
 	
+	private Color[] colorList;
+	
 	
 	public TileMap(String s) {
+		
+		colorListInisiat();
 		
 		//get tile size
 		tileSize = new Tile(0,0,Color.RED).getObjektSize();
@@ -42,25 +46,22 @@ public class TileMap {
 		}
 	}
 	
+	private void colorListInisiat() {
+		colorList = new Color[3];
+		colorList[0] = Color.GREEN;
+		colorList[1] = Color.BLACK;
+		colorList[2] = Color.GRAY;
+				
+	}
+	
 	// draws the map
 	
-	public void Draw(Graphics g) {
+	public void draw(Graphics g) {
 			
 		for (int row = 0; row < map.length; row++) {
 			for (int col = 0; col < map[row].length; col++) {
-				int tileType = map[row][col];
-				if (tileType == 0) {
-					tileMap[row][col] = new Tile(row * tileSize, col * tileSize, Color.GREEN);
-					tileMap[row][col].draw(g);
-				}
-				else if (tileType == 1) {	
-					tileMap[row][col] = new Tile(row * tileSize, col * tileSize, Color.BLACK);
-					tileMap[row][col].draw(g);
-				}
-				else if (tileType == 2) {	
-					tileMap[row][col] = new Tile(row * tileSize, col * tileSize, Color.GRAY);
-					tileMap[row][col].draw(g);
-				}
+				tileMap[row][col] = new Tile(row * tileSize, col * tileSize, colorList[map[row][col]]);
+				tileMap[row][col].draw(g);
 			}
 		}
 	}
