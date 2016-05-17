@@ -5,11 +5,12 @@ public class Enemy extends Object{
 	
 	public int life, speed;
 
-	public Enemy(int x, int y, Color c, int life) {
+	public Enemy(int x, int y, Color c, int life, int speed) {
 		setX(x);
 		setY(y);
 		setColor(c);
 		this.life = life;
+		this.speed = speed;
 		setObjektSize(30);
 	}
 	
@@ -19,15 +20,22 @@ public class Enemy extends Object{
 	}
 	
 	public void update() {
-		setX(getX() + 5);
+		setX(getX() + speed);
 	}
 	
 	public int getLife() {
 		return life;
 	}
 	
+	public int getSpeed() {
+		return speed;
+	}
+	
 	public void setLife(int life) {
 		this.life = life;
 	}
 	
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
 }

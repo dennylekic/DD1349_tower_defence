@@ -13,8 +13,7 @@ public class Game {
 		JFrame window = new JFrame("tower defence");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setSize(WIDTH * SCALE + 240, HEIGHT * SCALE + 40);
-		window.add(new Draw());
 		window.setVisible(true);
-		
+		window.add(new GameControler());
 	}
 }
