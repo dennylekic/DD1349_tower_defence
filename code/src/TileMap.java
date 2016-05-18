@@ -3,6 +3,8 @@ import java.awt.Graphics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import org.w3c.dom.css.RGBColor;
+
 public class TileMap {
 	
 	private int numRow, numCol, tileSize;
@@ -48,7 +50,7 @@ public class TileMap {
 	
 	private void colorListInisiat() {
 		colorList = new Color[3];
-		colorList[0] = Color.GREEN;
+		colorList[0] = new Color(0,100,0);
 		colorList[1] = Color.BLACK;
 		colorList[2] = Color.GRAY;
 				

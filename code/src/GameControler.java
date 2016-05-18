@@ -1,14 +1,15 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
 public class GameControler extends JPanel implements Runnable{
 	
+	
 	private TileMap tileMap;
 	private Enemy enemy;
-	
-	
+	private Player player;
 	
 	//game loog
 	private Thread thread;
@@ -20,7 +21,8 @@ public class GameControler extends JPanel implements Runnable{
 	public GameControler() {
 		
 		tileMap = new TileMap("maps/tilemap.txt");
-		enemy = new Enemy(20, 100, Color.RED, 20, 5);
+		enemy = new Enemy(20, 100, new Color(120, 13, 34), 20, 5);
+		player = new Player();
 		
 	}
 	
@@ -49,12 +51,14 @@ public class GameControler extends JPanel implements Runnable{
 			if (wait < 0) {
 				wait = 5;
 			}
+			if (player.getLife() <= 0) {
+				runGame = false;
+			}
 			try {
 				Thread.sleep(wait);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 		}
 	}
 	
@@ -66,8 +70,10 @@ public class GameControler extends JPanel implements Runnable{
 	
 	public void paint(Graphics g) {
 	        super.paint(g);
-	        tileMap.draw(g);
-	        enemy.draw(g);
+	        Graphics2D g2 = (Graphics2D) g;
+	        tileMap.draw(g2);
+	        enemy.draw(g2);
+	        
 	}
 	
 }

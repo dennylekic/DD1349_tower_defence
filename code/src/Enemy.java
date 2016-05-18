@@ -20,7 +20,12 @@ public class Enemy extends Object{
 	}
 	
 	public void update() {
-		setX(getX() + speed);
+		if(x >= 40 * 32 - objektSize){
+			x = 0;
+		}
+		else {
+			x = x + speed;
+		}
 	}
 	
 	public int getLife() {

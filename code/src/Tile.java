@@ -16,7 +16,4 @@ public class Tile extends Object{
 		g.setColor(c);
 		g.fillRect(x, y, objektSize, objektSize);
 	}
-	
-	
-
 }
