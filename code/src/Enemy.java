@@ -4,14 +4,15 @@ import java.awt.Graphics;
 public class Enemy extends Object{
 	
 	public int life, speed;
+	private int[][] map;
 
-	public Enemy(int x, int y, Color c, int life, int speed) {
-		setX(x);
-		setY(y);
+	public Enemy(int[][] map, Color c, int life, int speed) {
+		this.map = map;
 		setColor(c);
 		this.life = life;
 		this.speed = speed;
 		setObjektSize(30);
+		startPositon();
 	}
 	
 	public void draw(Graphics g) {
@@ -42,5 +43,17 @@ public class Enemy extends Object{
 	
 	public void setSpeed(int speed) {
 		this.speed = speed;
+	}
+	
+	public void startPositon() {
+		for (int row = 0; row < map.length; row++) {
+			for (int col = 0; col < map[row].length; col++) {
+				if (map[row][col] == -1) {
+					setX(row * 40); 
+					setY(col * 40 + 4);
+					System.out.println("ponter");
+				} 
+			}
+		}
 	}
 }

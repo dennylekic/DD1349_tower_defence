@@ -3,8 +3,6 @@ import java.awt.Graphics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-import org.w3c.dom.css.RGBColor;
-
 public class TileMap {
 	
 	private int numRow, numCol, tileSize;
@@ -62,8 +60,13 @@ public class TileMap {
 			
 		for (int row = 0; row < map.length; row++) {
 			for (int col = 0; col < map[row].length; col++) {
-				tileMap[row][col] = new Tile(row * tileSize, col * tileSize, colorList[map[row][col]]);
-				tileMap[row][col].draw(g);
+				if (map[row][col] == -1) {
+					tileMap[row][col] = new Tile(row * tileSize, col * tileSize, colorList[1]);
+					tileMap[row][col].draw(g);
+				} else {
+					tileMap[row][col] = new Tile(row * tileSize, col * tileSize, colorList[map[row][col]]);
+					tileMap[row][col].draw(g);
+				}
 			}
 		}
 	}

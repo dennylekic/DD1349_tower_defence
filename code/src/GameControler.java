@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 
 public class GameControler extends JPanel implements Runnable{
 	
-	
 	private TileMap tileMap;
 	private Enemy enemy;
 	private Player player;
@@ -17,11 +16,10 @@ public class GameControler extends JPanel implements Runnable{
 	private int FPS = 50;
 	private long targetTime = 1000 / FPS;
 	
-	
 	public GameControler() {
 		
 		tileMap = new TileMap("maps/tilemap.txt");
-		enemy = new Enemy(20, 100, new Color(120, 13, 34), 20, 5);
+		enemy = new Enemy(tileMap.getMap(), new Color(120, 13, 34), 20, 1);
 		player = new Player();
 		
 	}
@@ -61,8 +59,6 @@ public class GameControler extends JPanel implements Runnable{
 			}
 		}
 	}
-	
-	
 	
 	public void update() {
 		enemy.update();
