@@ -1,3 +1,6 @@
+/**
+ * Blueprints for enemy's and/of weary basic enemy. 
+ */
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -19,15 +22,6 @@ public class Enemy extends Object{
 	public void draw(Graphics g) {
 		g.setColor(c);
 		g.fillOval(x, y, objektSize, objektSize);
-	}
-	
-	private void printStuf() {
-		for (int row = 0; row < map.length; row++) {
-			for (int col = 0; col < map[row].length; col++) {
-				System.out.print(map[row][col].getTileType() + " ");
-			}
-			System.out.println();
-		}
 	}
 	
 	public int update() {
@@ -62,7 +56,6 @@ public class Enemy extends Object{
 		else {
 			return 0;
 		}
-		
 	}
 	
 	public int getLife() {

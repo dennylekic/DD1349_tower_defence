@@ -1,3 +1,6 @@
+/**
+ * colle and control all lin game.
+ */
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -26,6 +29,9 @@ public class GameControler extends JPanel implements Runnable{
 		
 	}
 	
+	/**
+	 * Game run loop
+	 */
 	public void addNotify() {
 		super.addNotify();
 		if (thread == null) {
@@ -34,10 +40,6 @@ public class GameControler extends JPanel implements Runnable{
 			thread.start();
 		}
 		
-	}
-	
-	public void sponEnemy() {
-		enemy.add(new Enemy(tileMap.getTileMap(), new Color(120, 13, 34), 20, 1));
 	}
 	
 	public void run() {
@@ -74,6 +76,10 @@ public class GameControler extends JPanel implements Runnable{
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void sponEnemy() {
+		enemy.add(new Enemy(tileMap.getTileMap(), new Color(120, 13, 34), 20, 1));
 	}
 	
 	public void update() {

@@ -1,3 +1,6 @@
+/**
+ * class to create tile. Draws a rectangle and set.  
+ */
 import java.awt.Color;
 import java.awt.Graphics;
 

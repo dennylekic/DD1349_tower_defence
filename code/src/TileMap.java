@@ -1,3 +1,6 @@
+/**
+ * Lode file to constrakt a map and draws it. 
+ */
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.BufferedReader;
@@ -25,7 +28,10 @@ public class TileMap {
 		creatTileArray();
 
 	}
-	
+	/**
+	 * lods structior to map to int array 
+	 * @param s name to lode file
+	 */
 	private void lodeFile(String s) {
 		
 		try {
@@ -53,6 +59,9 @@ public class TileMap {
 		}
 	}
 	
+	/**
+	 * create a array of tiles 
+	 */
 	private void creatTileArray() {
 		
 		for (int row = 0; row < numRow; row++) {
@@ -67,6 +76,10 @@ public class TileMap {
 			}
 		}
 	}
+	
+	/**
+	 * Generate list of colors 
+	 */
 	
 	private void colorListInisiat() {
 		colorList = new Color[3];

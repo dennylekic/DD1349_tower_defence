@@ -1,3 +1,6 @@
+/**
+ * create game window and calls GameControler
+ */
 import javax.swing.JFrame;
 
 public class Game {

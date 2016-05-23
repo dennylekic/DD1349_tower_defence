@@ -1,3 +1,6 @@
+/**
+ * class to cepe track of life, xp and gold; 
+ */
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;

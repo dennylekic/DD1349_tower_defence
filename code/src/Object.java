@@ -1,3 +1,6 @@
+/**
+ * Blueprints for all objects.  
+ */
 import java.awt.Color;
 
 public class Object {
