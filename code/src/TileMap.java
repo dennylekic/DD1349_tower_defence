@@ -18,9 +18,17 @@ public class TileMap {
 		colorListInisiat();
 		
 		//get tile size
-		tileSize = new Tile(0,0,Color.RED).getObjektSize();
+		tileSize = new Tile(0,0,Color.RED,0).getObjektSize();
 		
 		// lodes in map sturktionr from file 
+		lodeFile(s);
+		
+		creatTileArray();
+
+	}
+	
+	private void lodeFile(String s) {
+		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(s));
 			
@@ -46,6 +54,21 @@ public class TileMap {
 		}
 	}
 	
+	private void creatTileArray() {
+		
+		for (int row = 0; row < map.length; row++) {
+			for (int col = 0; col < map[row].length; col++) {
+				if (map[row][col] == -1) {
+					tileMap[row][col] = new Tile(row * tileSize, col * tileSize,
+							colorList[1], map[row][col]);
+				} else {
+					tileMap[row][col] = new Tile(row * tileSize, col * tileSize, 
+							colorList[map[row][col]], map[row][col]);
+				}
+			}
+		}
+	}
+	
 	private void colorListInisiat() {
 		colorList = new Color[3];
 		colorList[0] = new Color(0,100,0);
@@ -60,13 +83,7 @@ public class TileMap {
 			
 		for (int row = 0; row < map.length; row++) {
 			for (int col = 0; col < map[row].length; col++) {
-				if (map[row][col] == -1) {
-					tileMap[row][col] = new Tile(row * tileSize, col * tileSize, colorList[1]);
 					tileMap[row][col].draw(g);
-				} else {
-					tileMap[row][col] = new Tile(row * tileSize, col * tileSize, colorList[map[row][col]]);
-					tileMap[row][col].draw(g);
-				}
 			}
 		}
 	}

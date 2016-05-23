@@ -10,7 +10,7 @@ public class GameControler extends JPanel implements Runnable{
 	private Enemy enemy;
 	private Player player;
 	
-	//game loog
+	//game loop
 	private Thread thread;
 	private boolean runGame = false;
 	private int FPS = 50;
@@ -19,7 +19,7 @@ public class GameControler extends JPanel implements Runnable{
 	public GameControler() {
 		
 		tileMap = new TileMap("maps/tilemap.txt");
-		enemy = new Enemy(tileMap.getMap(), new Color(120, 13, 34), 20, 1);
+		enemy = new Enemy(tileMap.getTileMap(), new Color(120, 13, 34), 20, 1);
 		player = new Player();
 		
 	}

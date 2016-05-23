@@ -23,7 +23,6 @@ public class Object {
 		return c;
 	}
 	
-	
 	//set methods
 	
 	public void setObjektSize(int objektSize) {
