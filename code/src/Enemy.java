@@ -3,7 +3,7 @@ import java.awt.Graphics;
 
 public class Enemy extends Object{
 	
-	public int life, speed;
+	public int life, speed, rowPointer, colPointer, rowOld, colOld;
 	private Tile[][] map;
 
 	public Enemy(Tile[][] map, Color c, int life, int speed) {
@@ -12,6 +12,9 @@ public class Enemy extends Object{
 		this.life = life;
 		this.speed = speed;
 		setObjektSize(30);
+		
+		//printStuf();
+		
 		startPositon();
 	}
 	
@@ -20,13 +23,44 @@ public class Enemy extends Object{
 		g.fillOval(x, y, objektSize, objektSize);
 	}
 	
+	private void printStuf() {
+		for (int row = 0; row < map.length; row++) {
+			for (int col = 0; col < map[row].length; col++) {
+				System.out.print(map[row][col].getTileType() + " ");
+			}
+			System.out.println();
+		}
+	}
+	
 	public void update() {
-		if(x >= 40 * 32 - objektSize){
-			x = 0;
+		
+		if (map[rowPointer][colPointer+1].getTileType()==1 && colOld != colPointer+1) {
+			colOld = colPointer;
+			rowOld = -2;
+			colPointer ++;
 		}
-		else {
-			x = x + speed;
+		else if (map[rowPointer-1][colPointer].getTileType()==1 && rowOld != rowPointer-1) {
+			rowOld = rowPointer;
+			colOld = -2;
+			rowPointer --;
 		}
+		else if (map[rowPointer+1][colPointer].getTileType()==1 && rowOld != rowPointer+1) {
+			rowOld = rowPointer;
+			colOld = -2;
+			rowPointer ++;
+		}
+		if (map[rowPointer][colPointer-1].getTileType()==1 && colOld != colPointer-1) {
+			colOld = colPointer;
+			rowOld = -2;
+			colPointer --;
+		}
+		
+		
+		
+		x = map[rowPointer][colPointer].getX() +4; 
+		y = map[rowPointer][colPointer].getY() +4;
+		
+		
 	}
 	
 	public int getLife() {
@@ -49,9 +83,11 @@ public class Enemy extends Object{
 		for (int row = 0; row < map.length; row++) {
 			for (int col = 0; col < map[row].length; col++) {
 				if (map[row][col].getTileType() == -1) {
-					setX(row * 40); 
-					setY(col * 40 + 4);
-					System.out.println("ponter");
+					rowPointer = row;
+					colPointer = col;
+					setX(map[row][col].getX() + 4); 
+					setY(map[row][col].getY() + 4);
+					return;
 				} 
 			}
 		}

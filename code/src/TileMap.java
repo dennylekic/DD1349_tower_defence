@@ -22,7 +22,6 @@ public class TileMap {
 		
 		// lodes in map sturktionr from file 
 		lodeFile(s);
-		
 		creatTileArray();
 
 	}
@@ -35,34 +34,34 @@ public class TileMap {
 			numRow = Integer.parseInt(br.readLine());
 			numCol = Integer.parseInt(br.readLine());
 			
-			map = new int[numCol][numRow];
-			tileMap = new Tile[numCol][numRow];
+			map = new int[numRow][numCol];
+			tileMap = new Tile[numRow][numCol];
 			
 			String blank = " ";
 			for (int row = 0; row < numRow; row++) {
 				String line = br.readLine();
 				String[] tokens = line.split(blank);
 				for (int col = 0; col < numCol; col++) {
-					map[col][row] = Integer.parseInt(tokens[col]);
+					map[row][col] = Integer.parseInt(tokens[col]);
 				}
 			}
 			br.close();
 		} 
 		catch (Exception e) {
-			System.out.println("error lodin map file");
-			System.out.println(e);
+			System.err.println("error lodin map file");
+			System.err.println(e);
 		}
 	}
 	
 	private void creatTileArray() {
 		
-		for (int row = 0; row < map.length; row++) {
-			for (int col = 0; col < map[row].length; col++) {
+		for (int row = 0; row < numRow; row++) {
+			for (int col = 0; col < numCol; col++) {
 				if (map[row][col] == -1) {
-					tileMap[row][col] = new Tile(row * tileSize, col * tileSize,
+					tileMap[row][col] = new Tile(col * tileSize, row * tileSize,
 							colorList[1], map[row][col]);
 				} else {
-					tileMap[row][col] = new Tile(row * tileSize, col * tileSize, 
+					tileMap[row][col] = new Tile(col * tileSize, row * tileSize, 
 							colorList[map[row][col]], map[row][col]);
 				}
 			}

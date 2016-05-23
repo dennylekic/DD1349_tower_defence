@@ -13,7 +13,7 @@ public class GameControler extends JPanel implements Runnable{
 	//game loop
 	private Thread thread;
 	private boolean runGame = false;
-	private int FPS = 50;
+	private int FPS = 5;
 	private long targetTime = 1000 / FPS;
 	
 	public GameControler() {
