@@ -1,3 +1,6 @@
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 
 public class Player {
 
@@ -51,6 +54,13 @@ public class Player {
 	
 	public void spendGold(int spend) {
 		gold = gold - spend;
+	}
+	
+	public void draw(Graphics g) {
+		
+		g.setColor(Color.BLUE);
+		g.setFont(new Font("TimesRoman", 1, 20)); 
+		g.drawString("Life: "+life, 1300, 20);
 	}
 	
 	

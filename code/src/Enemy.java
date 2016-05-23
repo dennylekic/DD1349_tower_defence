@@ -13,8 +13,6 @@ public class Enemy extends Object{
 		this.speed = speed;
 		setObjektSize(30);
 		
-		//printStuf();
-		
 		startPositon();
 	}
 	
@@ -32,7 +30,7 @@ public class Enemy extends Object{
 		}
 	}
 	
-	public void update() {
+	public int update() {
 		
 		if (map[rowPointer][colPointer+1].getTileType()==1 && colOld != colPointer+1) {
 			colOld = colPointer;
@@ -49,17 +47,21 @@ public class Enemy extends Object{
 			colOld = -2;
 			rowPointer ++;
 		}
-		if (map[rowPointer][colPointer-1].getTileType()==1 && colOld != colPointer-1) {
+		else if (map[rowPointer][colPointer-1].getTileType()==1 && colOld != colPointer-1) {
 			colOld = colPointer;
 			rowOld = -2;
 			colPointer --;
 		}
 		
-		
-		
 		x = map[rowPointer][colPointer].getX() +4; 
 		y = map[rowPointer][colPointer].getY() +4;
-		
+	
+		if (map[rowPointer][colPointer+1].getTileType()==2 && colOld != colPointer+1) {
+			return 1;
+		} 
+		else {
+			return 0;
+		}
 		
 	}
 	
