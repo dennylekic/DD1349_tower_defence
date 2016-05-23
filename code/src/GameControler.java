@@ -1,7 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.List;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -12,21 +11,17 @@ public class GameControler extends JPanel implements Runnable{
 	private ArrayList<Enemy> enemy;
 	private Player player;
 	
-	
 	//game loop
 	private Thread thread;
-	private boolean runGame = false;
+	private boolean runGame = false, gameOver = false;
 	private int FPS = 5;
 	private long targetTime = 1000 / FPS;
-	
-	private boolean drawMap;
 	
 	public GameControler() {
 		
 		tileMap = new TileMap("maps/tilemap.txt");
 		enemy = new ArrayList<Enemy>();
 		player = new Player();
-		drawMap = false;
 		sponEnemy();
 		
 	}
@@ -66,6 +61,7 @@ public class GameControler extends JPanel implements Runnable{
 			}
 			if (player.getLife() <= 0) {
 				runGame = false;
+				gameOver = true;
 			}
 			if (timerNewEnemy == 10) {
 				sponEnemy();
@@ -92,12 +88,13 @@ public class GameControler extends JPanel implements Runnable{
 	public void paint(Graphics g) {
 	        super.paint(g);
 	        Graphics2D g2 = (Graphics2D) g;
-	        if (!drawMap) {
-	        	tileMap.draw(g2);
-			}
+	        tileMap.draw(g2);
 	        player.draw(g2);
 	        for (int i = 0; i < enemy.size(); i++) {
 				enemy.get(i).draw(g2);
+			}
+	        if (gameOver) {
+				player.gameOver(g2);
 			}
 	        
 	}

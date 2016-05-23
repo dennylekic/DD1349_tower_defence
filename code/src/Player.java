@@ -63,5 +63,12 @@ public class Player {
 		g.drawString("Life: "+life, 1300, 20);
 	}
 	
+	public void gameOver(Graphics g) {
+		g.setColor(Color.RED);
+		g.setFont(new Font("TimesRoman", 1, 200)); 
+		g.drawString("Game Over", 200, 500);
+
+	}
+	
 	
 }
