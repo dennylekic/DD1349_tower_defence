@@ -4,7 +4,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -32,7 +31,7 @@ public class GameControler extends JPanel implements Runnable, MouseListener, Mo
 	}
 	
 	public void init() {
-		tileMap = new TileMap("maps/tilemap.txt");
+		tileMap = new TileMap("maps/tilemap2.txt");
 		enemy = new ArrayList<Enemy>();
 		player = new Player();
 		puseBottun = new puseBottun();
@@ -66,6 +65,12 @@ public class GameControler extends JPanel implements Runnable, MouseListener, Mo
 			
 			if (puseBottun.getPuse() == false) {
 				update();
+				
+				// span new enemy
+				if (timerNewEnemy >= 10) {
+					sponEnemy(new Color(120, 13, 34),20,1,50);
+					timerNewEnemy = 0;
+				}
 			}
 			
 			repaint();
@@ -82,11 +87,6 @@ public class GameControler extends JPanel implements Runnable, MouseListener, Mo
 			if (player.getLife() <= 0) {
 				runGame = false;
 				gameOver = true;
-			}
-			// span new enemy
-			if (timerNewEnemy >= 10) {
-				sponEnemy(new Color(120, 13, 34),20,1,50);
-				timerNewEnemy = 0;
 			}
 			
 			try {
@@ -142,7 +142,6 @@ public class GameControler extends JPanel implements Runnable, MouseListener, Mo
 				my >= puseBottun.getY() && my <=puseBottun.getY() + puseBottun.getHeight()) {
 			puseBottun.klick();
 		}
-		
 	}
 
 	/**
@@ -171,7 +170,7 @@ public class GameControler extends JPanel implements Runnable, MouseListener, Mo
 		int mx, my;
 		mx = e.getX();
 		my = e.getY();
-		System.out.println("x: "+ mx + " y: " + my);
+		//System.out.println("x: "+ mx + " y: " + my);
 	}
 	
 }

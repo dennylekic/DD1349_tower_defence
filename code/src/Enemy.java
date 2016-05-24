@@ -28,22 +28,23 @@ public class Enemy extends Object{
 	
 	public int update() {
 		
+		
 		if (map[rowPointer][colPointer+1].getTileType()==1 && colOld != colPointer+1) {
 			colOld = colPointer;
 			rowOld = -2;
 			colPointer ++;
 		}
-		else if (map[rowPointer-1][colPointer].getTileType()==1 && rowOld != rowPointer-1) {
+		else if (rowPointer-1>=0 && map[rowPointer-1][colPointer].getTileType()==1 && rowOld != rowPointer-1) {
 			rowOld = rowPointer;
 			colOld = -2;
 			rowPointer --;
 		}
-		else if (map[rowPointer+1][colPointer].getTileType()==1 && rowOld != rowPointer+1) {
+		else if (rowPointer+1<=map.length && map[rowPointer+1][colPointer].getTileType()==1 && rowOld != rowPointer+1) {
 			rowOld = rowPointer;
 			colOld = -2;
 			rowPointer ++;
 		}
-		else if (map[rowPointer][colPointer-1].getTileType()==1 && colOld != colPointer-1) {
+		else if (colPointer-1>=0 && map[rowPointer][colPointer-1].getTileType()==1 && colOld != colPointer-1) {
 			colOld = colPointer;
 			rowOld = -2;
 			colPointer --;
