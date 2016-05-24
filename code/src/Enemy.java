@@ -6,14 +6,16 @@ import java.awt.Graphics;
 
 public class Enemy extends Object{
 	
-	public int life, speed, rowPointer, colPointer, rowOld, colOld;
+	public int life, speed, attack, gold, rowPointer, colPointer, rowOld, colOld;
 	private Tile[][] map;
 
-	public Enemy(Tile[][] map, Color c, int life, int speed) {
+	public Enemy(Tile[][] map, Color c, int life, int speed, int attack, int gold) {
 		this.map = map;
 		setColor(c);
 		this.life = life;
 		this.speed = speed;
+		this.attack = attack;
+		this.gold = gold;
 		setObjektSize(30);
 		
 		startPositon();
@@ -58,22 +60,6 @@ public class Enemy extends Object{
 		}
 	}
 	
-	public int getLife() {
-		return life;
-	}
-	
-	public int getSpeed() {
-		return speed;
-	}
-	
-	public void setLife(int life) {
-		this.life = life;
-	}
-	
-	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
-	
 	public void startPositon() {
 		for (int row = 0; row < map.length; row++) {
 			for (int col = 0; col < map[row].length; col++) {
@@ -86,5 +72,38 @@ public class Enemy extends Object{
 				} 
 			}
 		}
+	}
+	
+	// get
+	public int getLife() {
+		return life;
+	}
+	
+	public int getSpeed() {
+		return speed;
+	}
+	
+	public int getAttack() {
+		return attack;
+	}
+
+	public int getGold() {
+		return gold;
+	}
+	// set
+	public void setLife(int life) {
+		this.life = life;
+	}
+	
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+	
+	public void setAtteck(int attack) {
+		this.attack = attack;
+	}
+
+	public void setgold(int gold) {
+		this.gold = gold;
 	}
 }

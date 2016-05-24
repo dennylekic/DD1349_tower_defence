@@ -26,6 +26,14 @@ public class Object {
 		return c;
 	}
 	
+	public int getWidth() {
+		return width;
+	}
+	
+	public int getHeight() {
+		return height;
+	}
+	
 	//set methods
 	
 	public void setObjektSize(int objektSize) {
@@ -41,5 +49,13 @@ public class Object {
 	}
 	public void setColor(Color c) {
 		this.c = c;
+	}
+	
+	public void setWidth(int width) {
+		this.width = width;
+	}
+	
+	public void setHeight(int height) {
+		this.height = height;
 	}
 }

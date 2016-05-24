@@ -1,3 +1,6 @@
+/**
+ *	bottun to pase enemy and tower from update
+ */
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;

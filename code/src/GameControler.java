@@ -4,11 +4,16 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
-public class GameControler extends JPanel implements Runnable{
+public class GameControler extends JPanel implements Runnable, MouseListener, MouseMotionListener{
 	
 	private TileMap tileMap;
 	private ArrayList<Enemy> enemy;
@@ -24,8 +29,6 @@ public class GameControler extends JPanel implements Runnable{
 	public GameControler() {
 		
 		init();
-		sponEnemy();
-		
 	}
 	
 	public void init() {
@@ -33,6 +36,8 @@ public class GameControler extends JPanel implements Runnable{
 		enemy = new ArrayList<Enemy>();
 		player = new Player();
 		puseBottun = new puseBottun();
+		addMouseListener(this);
+		addMouseMotionListener(this);
 	}
 	
 	/**
@@ -48,10 +53,13 @@ public class GameControler extends JPanel implements Runnable{
 		
 	}
 	
+	/**
+	 * Game run loop
+	 */
 	public void run() {
 		long start, elapsed, wait, timerNewEnemy;
 		
-		timerNewEnemy = 0;
+		timerNewEnemy = 9;
 		
 		while(runGame) {
 			start = System.nanoTime();
@@ -70,12 +78,14 @@ public class GameControler extends JPanel implements Runnable{
 			if (wait < 0) {
 				wait = 5;
 			}
+			// stops game if player life <= 0
 			if (player.getLife() <= 0) {
 				runGame = false;
 				gameOver = true;
 			}
-			if (timerNewEnemy == 10) {
-				sponEnemy();
+			// span new enemy
+			if (timerNewEnemy >= 10) {
+				sponEnemy(new Color(120, 13, 34),20,1,50);
 				timerNewEnemy = 0;
 			}
 			
@@ -87,18 +97,25 @@ public class GameControler extends JPanel implements Runnable{
 		}
 	}
 	
-	public void sponEnemy() {
-		enemy.add(new Enemy(tileMap.getTileMap(), new Color(120, 13, 34), 20, 1));
+	public void sponEnemy(Color c, int life, int speed, int attack) {
+		enemy.add(new Enemy(tileMap.getTileMap(), c, life, speed, attack, new Random().nextInt(30)+20));
 	}
 	
+	/**
+	 * Calls and controls all the update metheds
+	 */
 	public void update() {
 		for (int i = 0; i < enemy.size(); i++) {
 			if(enemy.get(i).update() == 1) {
 				enemy.remove(i);
-				player.takeDamage(50);
+				player.takeDamage(enemy.get(i).getAttack());
 			}
 		}
 	}
+	
+	/**
+	 * Calls and controls all the draw metheds
+	 */
 	
 	public void paint(Graphics g) {
 	        super.paint(g);
@@ -113,6 +130,45 @@ public class GameControler extends JPanel implements Runnable{
 				player.gameOver(g2);
 			}
 	        
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		int mx, my;
+		mx = e.getX();
+		my = e.getY();
+		
+		if (mx >= puseBottun.getX() && mx <= puseBottun.getX() + puseBottun.getWidth() && 
+				my >= puseBottun.getY() && my <=puseBottun.getY() + puseBottun.getHeight()) {
+			puseBottun.klick();
+		}
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {}
+
+	@Override
+	public void mouseExited(MouseEvent e) {}
+
+	@Override
+	public void mousePressed(MouseEvent e) {}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		int mx, my;
+		mx = e.getX();
+		my = e.getY();
+		System.out.println("x: "+ mx + " y: " + my);
 	}
 	
 }

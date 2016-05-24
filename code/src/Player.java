@@ -63,6 +63,7 @@ public class Player {
 		g.setColor(Color.BLUE);
 		g.setFont(new Font("TimesRoman", 1, 20)); 
 		g.drawString("Life: "+life, 1300, 25);
+		g.drawString("Gold: "+gold, 1300, 45);
 	}
 	
 	public void gameOver(Graphics g) {
