@@ -6,7 +6,7 @@ import java.awt.Graphics;
 
 public class Enemy extends Object{
 	
-	public int life, speed, attack, gold, rowPointer, colPointer, rowOld, colOld;
+	public int life, speed, attack, gold, rowPointer, colPointer, rowOld, colOld, lastRaund;
 	private Tile[][] map;
 
 	public Enemy(Tile[][] map, Color c, int life, int speed, int attack, int gold) {
@@ -16,6 +16,7 @@ public class Enemy extends Object{
 		this.speed = speed;
 		this.attack = attack;
 		this.gold = gold;
+		lastRaund = 0;
 		setObjektSize(30);
 		
 		startPositon();
@@ -28,7 +29,24 @@ public class Enemy extends Object{
 	
 	public int update() {
 		
+		nextTile();
+		x = map[rowPointer][colPointer].getX() +4; 
+		y = map[rowPointer][colPointer].getY() +4;
+	
+		if (lastRaund == 1) {
+			return 1;
+		}
+		else if (map[rowPointer][colPointer+1].getTileType()==2 && colOld != colPointer+1) {
+			lastRaund = 1;
+		} 
 		
+		return 0;
+	}
+	
+	/**
+	 * Cheks were the next tile in the lane is.
+	 */
+	public void nextTile() {
 		if (map[rowPointer][colPointer+1].getTileType()==1 && colOld != colPointer+1) {
 			colOld = colPointer;
 			rowOld = -2;
@@ -48,16 +66,6 @@ public class Enemy extends Object{
 			colOld = colPointer;
 			rowOld = -2;
 			colPointer --;
-		}
-		
-		x = map[rowPointer][colPointer].getX() +4; 
-		y = map[rowPointer][colPointer].getY() +4;
-	
-		if (map[rowPointer][colPointer+1].getTileType()==2 && colOld != colPointer+1) {
-			return 1;
-		} 
-		else {
-			return 0;
 		}
 	}
 	
