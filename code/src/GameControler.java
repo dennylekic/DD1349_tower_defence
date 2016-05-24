@@ -13,6 +13,7 @@ public class GameControler extends JPanel implements Runnable{
 	private TileMap tileMap;
 	private ArrayList<Enemy> enemy;
 	private Player player;
+	private puseBottun puseBottun;
 	
 	//game loop
 	private Thread thread;
@@ -22,11 +23,16 @@ public class GameControler extends JPanel implements Runnable{
 	
 	public GameControler() {
 		
+		init();
+		sponEnemy();
+		
+	}
+	
+	public void init() {
 		tileMap = new TileMap("maps/tilemap.txt");
 		enemy = new ArrayList<Enemy>();
 		player = new Player();
-		sponEnemy();
-		
+		puseBottun = new puseBottun();
 	}
 	
 	/**
@@ -50,7 +56,10 @@ public class GameControler extends JPanel implements Runnable{
 		while(runGame) {
 			start = System.nanoTime();
 			
-			update();
+			if (puseBottun.getPuse() == false) {
+				update();
+			}
+			
 			repaint();
 			
 			elapsed = System.nanoTime() - start;
@@ -96,6 +105,7 @@ public class GameControler extends JPanel implements Runnable{
 	        Graphics2D g2 = (Graphics2D) g;
 	        tileMap.draw(g2);
 	        player.draw(g2);
+	        puseBottun.draw(g2);
 	        for (int i = 0; i < enemy.size(); i++) {
 				enemy.get(i).draw(g2);
 			}
