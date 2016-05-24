@@ -131,7 +131,11 @@ public class GameControler extends JPanel implements Runnable, MouseListener, Mo
 			}
 	        
 	}
-
+	
+	/**
+	 * mouse
+	 */
+	// mouse lisener
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		int mx, my;
@@ -144,10 +148,6 @@ public class GameControler extends JPanel implements Runnable, MouseListener, Mo
 		}
 	}
 
-	/**
-	 * mouse
-	 */
-	// mouse lisener
 	@Override
 	public void mouseEntered(MouseEvent e) {}
 
